@@ -72,6 +72,7 @@ def _create_dashboards():
         table_name=BIRTH_NAMES_TBL_NAME,
         database=get_example_database(),
         fetch_values_predicate="123 = 123",
+        schema=get_example_default_schema(),
     )
 
     from superset.examples.birth_names import create_dashboard, create_slices
@@ -87,11 +88,13 @@ def _create_table(
     table_name: str,
     database: "Database",
     fetch_values_predicate: Optional[str] = None,
+    schema: Optional[str] = None,
 ):
     table = create_table_metadata(
         table_name=table_name,
         database=database,
         fetch_values_predicate=fetch_values_predicate,
+        schema=schema,
     )
     from superset.examples.birth_names import _add_table_metrics, _set_table_metadata
 
